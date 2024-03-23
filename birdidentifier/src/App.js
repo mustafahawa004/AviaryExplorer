@@ -20,12 +20,12 @@ function App() {
 
   const handleShowAboutText = () => {
     setShowAboutText(true);
-    setShowUploadButton(true);
+    setShowUploadButton(false);
   };
 
   const handleHideAboutText = () => {
     setShowAboutText(false);
-    setShowUploadButton(false);
+    setShowUploadButton(true);
   };
 
   return (

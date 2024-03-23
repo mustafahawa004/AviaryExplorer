@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
+import './components/FileUpload.css'; // Import the CSS file for file upload styling
 
 function App() {
   const [isTranslated, setIsTranslated] = useState(false);
@@ -38,11 +39,22 @@ function App() {
         {/* Logo */}
         <img src="/bird-explorer.png" alt="Bird Explorer Logo" className={`App-logo ${isTranslated ? `translate-${direction}` : ''}`} />
 
+        {/* File Upload */}
+        <div className="file-upload-container">
+          <label htmlFor="file-upload" className="file-upload-label">
+            <div className="file-upload-box">
+              <span className="file-upload-text">Upload Image</span>
+              <input type="file" id="file-upload" className="file-upload-input" />
+            </div>
+          </label>
+          <button className="nice-button">Upload</button>
+        </div>
+
         {/* About text */}
         {showAboutText && (
           <div className="about-text">
             <h2>About Us:</h2>
-            <p>"We are computer science students aiming to make bird identification easier for birdwatchers, hobbyists, and anyone who is just curious about birds! Our goal is to empower people who otherwise may not be able to identify birds."</p>
+            <p>"We are a collective of Virginia Tech Students advocating for fellow students to have better access to nutritional information about their food. Our goal is to empower students to monitor and understand what they consume, as we firmly believe that prioritizing health ultimately leads to wealth."</p>
           </div>
         )}
       </header>

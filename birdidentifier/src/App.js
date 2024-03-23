@@ -42,7 +42,7 @@ function App() {
         {showAboutText && (
           <div className="about-text">
             <h2>About Us:</h2>
-            <p>"We are a collective of Virginia Tech Students advocating for fellow students to have better access to nutritional information about their food. Our goal is to empower students to monitor and understand what they consume, as we firmly believe that prioritizing health ultimately leads to wealth."</p>
+            <p>"We are computer science students aiming to make bird identification easier for birdwatchers, hobbyists, and anyone who is just curious about birds! Our goal is to empower people who otherwise may not be able to identify birds."</p>
           </div>
         )}
       </header>

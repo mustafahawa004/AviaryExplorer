@@ -6,6 +6,7 @@ function App() {
   const [isTranslated, setIsTranslated] = useState(false);
   const [direction, setDirection] = useState('left');
   const [showAboutText, setShowAboutText] = useState(false);
+  const {showUploadButton, setShowUploadButton} = useState(true);
 
   const handleTranslate = () => {
     setIsTranslated(true);
@@ -19,10 +20,12 @@ function App() {
 
   const handleShowAboutText = () => {
     setShowAboutText(true);
+    setShowUploadButton(true);
   };
 
   const handleHideAboutText = () => {
     setShowAboutText(false);
+    setShowUploadButton(false);
   };
 
   return (
@@ -54,7 +57,7 @@ function App() {
         {showAboutText && (
           <div className="about-text">
             <h2>About Us:</h2>
-            <p>"We are a collective of Virginia Tech Students advocating for fellow students to have better access to nutritional information about their food. Our goal is to empower students to monitor and understand what they consume, as we firmly believe that prioritizing health ultimately leads to wealth."</p>
+            <p>"We are computer science students who want to facilitate the identification of different animals for anyone who needs to identify a certain animal! Our goal is to empower those who may otherwise not be able to identify different species of animals."</p>
           </div>
         )}
       </header>

@@ -6,7 +6,7 @@ app = Flask(__name__)
 # Initialize the InferenceHTTPClient
 CLIENT = InferenceHTTPClient(
     api_url="https://detect.roboflow.com",
-    api_key="YOUR_ROBOFLOW_API_KEY"
+    api_key="rAckvLPYRYeXA3pUbecr"
 )
 
 @app.route('/infer', methods=['POST'])

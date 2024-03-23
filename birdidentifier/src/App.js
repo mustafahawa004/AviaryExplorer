@@ -8,6 +8,8 @@ function App() {
   const [showAboutText, setShowAboutText] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
   const [errorMessage, setErrorMessage] = useState('');
+  const [showUploadButton, setShowUploadButton] = useState(true); 
+  const [showFileUploadBox, setShowFileUploadBox] = useState(true); 
 
   const handleTranslate = () => {
     setIsTranslated(true);
@@ -21,11 +23,16 @@ function App() {
 
   const handleShowAboutText = () => {
     setShowAboutText(true);
+    setShowUploadButton(false);
+    setShowFileUploadBox(false);
   };
 
   const handleHideAboutText = () => {
     setShowAboutText(false);
+    setShowUploadButton(true);
+    setShowFileUploadBox(true);
   };
+
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -65,6 +72,7 @@ function App() {
         <img src="/bird-explorer.png" alt="Bird Explorer Logo" className={`App-logo ${isTranslated ? `translate-${direction}` : ''}`} />
 
         {/* File Upload */}
+        {showFileUploadBox && (
         <div className="file-upload-container">
           <label htmlFor="file-upload" className="file-upload-label">
             <div className="file-upload-box">
@@ -72,9 +80,10 @@ function App() {
               <input type="file" id="file-upload" className="file-upload-input" onChange={handleFileChange} />
             </div>
           </label>
-          <button className="nice-button" onClick={handleUpload}>Upload</button>
+          {showUploadButton && <button className="nice-button" onClick={handleUpload}>Upload</button>}
           {errorMessage && <p className="error-message">{errorMessage}</p>}
         </div>
+        )}
 
         {/* About text */}
         {showAboutText && (

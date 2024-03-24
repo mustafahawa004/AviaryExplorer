@@ -9,10 +9,9 @@ const Results = ({ imageUrl }) => {
   useEffect(() => {
     const performInference = async () => {
       try {
-        // Send the image URL to the API for inference
-        const response = await axios.post(`https://detect.roboflow.com/animal-detection-68jio/1`, {
-          api_key: "rAckvLPYRYeXA3pUbecr",
-          image: imageUrl
+        // Send the image URL to your backend server
+        const response = await axios.post(`http://localhost:5000/infer`, {
+          url: imageUrl,
         });
 
         // Set the result data

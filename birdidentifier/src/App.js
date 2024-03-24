@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import './components/FileUpload.css';
-import Results from './components/Results.js'; // Import the Results component
+import Results from './components/Results.js';
 
 function App() {
   const [isTranslated, setIsTranslated] = useState(false);
@@ -51,21 +51,17 @@ function App() {
 
   const handleUpload = () => {
     if (selectedFile) {
-      const formData = new FormData();
-      formData.append('image_url', selectedFile);
-
-      fetch('/infer', {
-        method: 'POST',
-        body: formData,
-      })
-        .then((response) => response.json())
-        .then((result) => {
-          // Set the result data
-          setResultData(result);
-        })
-        .catch((error) => {
-          console.error('Error performing inference:', error);
-        });
+      // Convert the uploaded file to a data URL
+      const reader = new FileReader();
+      reader.readAsDataURL(selectedFile);
+      reader.onload = () => {
+        const imageUrl = reader.result;
+        setResultData(imageUrl); // Pass the data URL to Results.js
+      };
+      reader.onerror = (error) => {
+        console.error('Error converting file to data URL:', error);
+        setErrorMessage('Failed to convert file to data URL.');
+      };
     } else {
       setErrorMessage('Please select a file to upload.');
     }
@@ -140,7 +136,6 @@ function App() {
             )}
           </div>
         )}
-
         {/* About text */}
         {showAboutText && (
           <div className="about-text">
